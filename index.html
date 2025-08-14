@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Salman Fareeth | Cybersecurity Researcher</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@100;200;300;400;500;600;700;800;900&family=SF+Pro+Text:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-tertiary: rgba(255, 255, 255, 0.6);
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .font-display {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Liquid Glass Effects */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15), 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .glass-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .glass-button:hover::before {
+            left: 100%;
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-text-accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Floating Animation */
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Liquid Blob Animations */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            animation: blob 20s infinite;
+            opacity: 0.3;
+        }
+        
+        .blob-1 {
+            top: 10%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: var(--primary-gradient);
+            animation-delay: 0s;
+        }
+        
+        .blob-2 {
+            top: 50%;
+            right: 10%;
+            width: 250px;
+            height: 250px;
+            background: var(--secondary-gradient);
+            animation-delay: 7s;
+        }
+        
+        .blob-3 {
+            bottom: 10%;
+            left: 20%;
+            width: 200px;
+            height: 200px;
+            background: var(--accent-gradient);
+            animation-delay: 14s;
+        }
+        
+        @keyframes blob {
+            0%, 100% {
+                transform: translate(0px, 0px) scale(1) rotate(0deg);
+            }
+            33% {
+                transform: translate(100px, -50px) scale(1.1) rotate(120deg);
+            }
+            66% {
+                transform: translate(-50px, 100px) scale(0.9) rotate(240deg);
+            }
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Typing Animation */
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #4facfe;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #4facfe }
+        }
+        
+        /* Project Cards with Tilt Effect */
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform-style: preserve-3d;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .project-card:hover {
+            transform: rotateX(5deg) rotateY(5deg) translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* CVE Display Glass */
+        .cve-display-glass {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: inset 0 0 50px rgba(255, 255, 255, 0.05);
+        }
+        
+        /* CVE Severity Badges */
+        .severity-critical {
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+        }
+        
+        .severity-high {
+            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
+            box-shadow: 0 0 20px rgba(234, 88, 12, 0.5);
+        }
+        
+        .severity-medium {
+            background: linear-gradient(135deg, #d97706 0%, #92400e 100%);
+            box-shadow: 0 0 20px rgba(217, 119, 6, 0.5);
+        }
+        
+        .severity-low {
+            background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+            box-shadow: 0 0 20px rgba(22, 163, 74, 0.5);
+        }
+        
+        /* CVE Animation Effects */
+        .cve-pulse {
+            animation: cve-pulse 2s infinite;
+        }
+        
+        @keyframes cve-pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                transform: scale(1.02);
+            }
+        }
+        
+        /* Form Glass Effects */
+        .form-glass input,
+        .form-glass textarea {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-glass input:focus,
+        .form-glass textarea:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.3);
+            outline: none;
+        }
+        
+        /* Timeline Glass */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+            box-shadow: 0 0 20px rgba(79, 172, 254, 0.6);
+            z-index: 1;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 16px;
+            width: 2px;
+            height: calc(100% + 24px);
+            background: linear-gradient(to bottom, rgba(79, 172, 254, 0.5), transparent);
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        /* Marquee Animation */
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+        }
+        
+        .marquee-content {
+            display: inline-flex;
+            animation: marquee 40s linear infinite;
+            gap: 2rem;
+            
+        }
+        
+        .marquee-item {
+            flex-shrink: 0;
+        }
+        
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .logo-placeholder {
+            width: 120px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .small-logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 auto;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .blob {
+                filter: blur(50px);
+            }
+            
+            .blob-1, .blob-2, .blob-3 {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .glass-card:hover {
+                transform: translateY(-4px) scale(1.01);
+            }
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-gradient);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-gradient);
+        }
+    </style>
+</head>
+<body class="relative min-h-screen">
+    <!-- Animated Background Blobs -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="nav-glass fixed top-0 w-full z-50 py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="font-display text-xl font-bold gradient-text">
+                Hello! 👋
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-white/80 hover:text-white transition-colors duration-300">About</a>
+                <a href="#skills" class="text-white/80 hover:text-white transition-colors duration-300">Skills</a>
+                <a href="#projects" class="text-white/80 hover:text-white transition-colors duration-300">Projects</a>
+                <a href="#contact" class="glass-button px-6 py-2 rounded-full text-white">Contact</a>
+            </div>
+            
+            <button id="mobile-menu-btn" class="md:hidden glass-button p-3 rounded-full">
+                <i class="fas fa-bars text-white"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center px-6 pt-20">
+        <div class="container mx-auto relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <p class="gradient-text-accent text-lg font-medium">my name is</p>
+                        <h1 class="font-display text-5xl md:text-7xl font-bold text-white leading-tight">
+                            Syed Salman<br>
+                            <span class="gradient-text">Fareeth</span>
+                        </h1>
+                        <h2 class="text-2xl md:text-4xl font-display text-white/70">
+                            <span id="typing-text" class="typing-animation"></span>
+                        </h2>
+                    </div>
+                    
+                    <p class="text-xl text-white/80 leading-relaxed max-w-2xl">
+                        I'm a cybersecurity researcher specializing in vulnerability assessment, 
+                        penetration testing, and developing secure systems. Currently focused on 
+                        zero-day exploit research and AI-powered threat detection.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="RESUME_Not_Found_contact_syed" class="glass-button px-8 py-4 rounded-full text-white font-medium flex items-center justify-center space-x-3 hover:scale-105 transition-transform" target="_blank">
+                            <i class="fas fa-download"></i>
+                            <span>Download Resume</span>
+                        </a>
+                        <a href="#projects" class="glass-button px-8 py-4 rounded-full text-white font-medium flex items-center justify-center space-x-3 hover:scale-105 transition-transform">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative floating">
+                        <div class="glass-card w-80 h-80 rounded-full p-8 flex items-center justify-center">
+                            <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white/20">
+                                <img src="./images/profile_pic.jpg" alt="Syed Salman Fareeth" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                About <span class="gradient-text">Me</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div class="glass-card rounded-3xl p-8">
+                        <p class="text-lg text-white/80 mb-6 leading-relaxed">
+                            With over 4+ years of experience in cybersecurity, I've worked with organizations 
+                            ranging from startups to Fortune 500 companies to secure their digital assets and 
+                            infrastructure. Contributed to CERT-In empanelled information security audits under 
+                            Primefort, featured in official snapshots of skills and competence.
+                        </p>
+                        <p class="text-lg text-white/80 mb-6 leading-relaxed">
+                            My approach combines technical expertise with a deep understanding of attacker 
+                            methodologies. I believe in proactive security measures and continuous learning 
+                            to stay ahead of emerging threats.
+                        </p>
+                        <p class="text-lg text-white/80 leading-relaxed">
+                            When I'm not hunting vulnerabilities, I contribute to open-source security tools 
+                            and mentor aspiring security professionals.
+                        </p>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8">
+                        <h3 class="text-2xl font-display font-bold mb-8 gradient-text">Professional Journey</h3>
+                        <div class="space-y-8">
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-white mb-2">Security Engineer</h4>
+                                <p class="gradient-text-accent font-medium mb-2">Primefort Pvt Ltd. | Oct 2022 - Present</p>
+                                <p class="text-white/70">Conducted penetration tests and security assessments for enterprise clients.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-white mb-2">Platform Operations Specialist</h4>
+                                <p class="gradient-text-accent font-medium mb-2">ZeroFox India Pvt Ltd. | Dec 2020 - Sept 2022</p>
+                                <p class="text-white/70">Conducted and managed social media and domain takedowns to identify and mitigate online risks.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-xl font-bold text-white mb-2">Security Analyst Trainee</h4>
+                                <p class="gradient-text-accent font-medium mb-2">SOC Experts | Feb 2020 - Nov 2020</p>
+                                <p class="text-white/70">Monitored security incidents and implemented defensive measures</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="glass-card rounded-3xl p-8">
+                        <div class="flex items-center mb-8">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-2xl flex items-center justify-center mr-6">
+                                <i class="fas fa-certificate text-3xl gradient-text-accent"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white">Certifications</h3>
+                                <p class="text-white/60">Industry recognized qualifications</p>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center p-4 glass rounded-xl">
+                                <i class="fas fa-check-circle text-green-400 mr-4 text-xl"></i>
+                                <span class="text-white">CompTIA Cyber Security Analyst (CySA+)</span>
+                            </div>
+                            <div class="flex items-center p-4 glass rounded-xl">
+                                <i class="fas fa-check-circle text-green-400 mr-4 text-xl"></i>
+                                <span class="text-white">Certified Security Analyst (ECSA)</span>
+                            </div>
+                            <div class="flex items-center p-4 glass rounded-xl">
+                                <i class="fas fa-check-circle text-green-400 mr-4 text-xl"></i>
+                                <span class="text-white">Certified Multi-Cloud Blue Team Analyst</span>
+                            </div>
+                            <div class="flex items-center p-4 glass rounded-xl">
+                                <i class="fas fa-check-circle text-green-400 mr-4 text-xl"></i>
+                                <span class="text-white">Certified Ethical Hacking (CEH)</span>
+                            </div>
+                            <div class="flex items-center p-4 glass rounded-xl">
+                                <i class="fas fa-check-circle text-green-400 mr-4 text-xl"></i>
+                                <span class="text-white">Art of Hacking Through Programming</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8">
+                        <h3 class="text-2xl font-display font-bold mb-8 gradient-text">Education</h3>
+                        <div class="space-y-6">
+                            <div class="p-6 glass rounded-2xl">
+                                <h4 class="text-xl font-bold text-white mb-2">M.S. Data Analytics</h4>
+                                <p class="gradient-text-accent font-medium">De MontFort University, UK | Pursuing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                Technical <span class="gradient-text">Skills</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-xl font-display font-bold mb-6 gradient-text">Core Competencies</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-shield-alt text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Penetration Testing</span>
+                        </div>
+                        
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-bug text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Vulnerability Assessment</span>
+                        </div>
+                        
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-virus text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Malware Analysis</span>
+                        </div>
+                        
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-exclamation-triangle text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Incident Response</span>
+                        </div>
+                        
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-search text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Threat Intelligence</span>
+                        </div>
+                        
+                        <div class="flex items-center p-3 glass rounded-xl">
+                            <i class="fas fa-lock text-cyan-400 mr-3 text-lg"></i>
+                            <span class="text-white">Security Operations</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-6">
+                    <h3 class="text-xl font-display font-bold mb-6 gradient-text">Technical Toolkit</h3>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-code text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">Programming</h4>
+                            <p class="text-white/60 text-xs">Python, C/C++, Go, JavaScript</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-bug text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">Exploit Dev</h4>
+                            <p class="text-white/60 text-xs">Web and Mobile based Exploitation</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-network-wired text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">Network Security</h4>
+                            <p class="text-white/60 text-xs">Wireshark, Snort, pfSense</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-tools text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">Security Tools</h4>
+                            <p class="text-white/60 text-xs">Metasploit, Burp Suite, Nmap</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-cloud text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">Cloud Security</h4>
+                            <p class="text-white/60 text-xs">AWS, Azure, GCP, Docker</p>
+                        </div>
+                        
+                        <div class="glass p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
+                            <i class="fas fa-brain text-2xl gradient-text-accent mb-2"></i>
+                            <h4 class="text-white font-bold mb-1 text-sm">AI Security</h4>
+                            <p class="text-white/60 text-xs">ML-based threat detection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8">
+                <div class="glass-card rounded-3xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h3 class="text-2xl font-display font-bold gradient-text">Security Advisories</h3>
+                            <p class="text-sm text-white/60 mt-1">Latest security vulnerabilities in popular packages & repositories</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <a href="https://github.com/advisories" target="_blank" class="glass-button px-4 py-2 rounded-full text-white text-sm hover:scale-105 transition-transform flex items-center space-x-2">
+                                <i class="fab fa-github"></i>
+                                <span>Visit GitHub Advisories</span>
+                                <i class="fas fa-external-link-alt text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Security Advisories Display -->
+                    <div class="cve-display-glass rounded-2xl h-40 relative overflow-hidden">
+                        <div id="advisory-container" class="absolute inset-0 flex items-center justify-center p-8">
+                            <div class="text-center max-w-4xl">
+                                <div id="advisory-content" class="space-y-2">
+                                    <h4 id="advisory-title" class="text-xl font-semibold text-white leading-tight">
+                                        Loading security advisories...
+                                    </h4>
+                                    <div class="flex items-center justify-center space-x-4 text-sm">
+                                        <span id="advisory-cve" class="text-purple-300 font-medium">CVE-****-****</span>
+                                        <span class="text-white/40">•</span>
+                                        <span id="advisory-package" class="text-blue-300">Package Name</span>
+                                        <span class="text-white/40">•</span>
+                                        <span id="advisory-time" class="text-white/60">** hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Loading animation -->
+                        <div id="advisory-loading" class="absolute inset-0 flex items-center justify-center">
+                            <div class="flex space-x-2">
+                                <div class="w-3 h-3 bg-purple-400 rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+                                <div class="w-3 h-3 bg-blue-400 rounded-full animate-bounce" style="animation-delay: 0.1s;"></div>
+                                <div class="w-3 h-3 bg-green-400 rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                Featured <span class="gradient-text">Projects</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/LLM-Deployment" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">LLM Deployment on a Local PC</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            This project demonstrates how to deploy a Locally Running LLM (Ollama + Deepseek-R1 model) on your personal computer, exposing it through a Flask API, and interacting with it via a Telegram Bot.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Python</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Ollama</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Deepseek-R1</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Botfather (Telegram)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-blue-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/Local-Privilege-Escalation-Detection-Tool" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i> 
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Local Privilege Escalation Detection Tool</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            The Local Privilege Escalation Detection Tool is a Python-based script designed to detect potential privilege escalation vulnerabilities on a system. The tool performs various checks including: User Privilege Analysis, File and Directory Permissions, Process Analysis, Registry Analysis and Log Analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Python</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/Secure-Chat-Application" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Secure Chat Application</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            This project is a secure chat application implemented in Python using socket programming and encryption techniques. The application includes a graphical user interface (GUI) for a better user experience. It supports secure communication, user authentication, end-to-end encryption, and a secure key exchange mechanism.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Python</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">tkinter</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Cryptography</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-yellow-500/20 to-orange-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/Socket-Programming-Tool" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Socket Programming Tool</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            The Socket Programming Tool is a comprehensive utility designed to facilitate various network-related tasks using Python's socket programming capabilities. It includes functionalities for scanning open ports, grabbing server banners, and setting up TCP/UDP servers and clients.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Python</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Port Scanner</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Banner Grabber</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">TCP/UDP Servers</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-500/20 to-pink-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/SQL-injection-vulnerability-demo" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">SQL injection vulnerability demo</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            This repository demonstrates a SQL injection vulnerability in a simple PHP application. The purpose of this demo is to educate developers about the dangers of SQL injection and how to prevent it.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">PHP</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">SQL</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Security</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">OWASP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card rounded-3xl overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <div class="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 rounded-xl flex items-center justify-center">
+                                <i class="fas fa-folder-open text-2xl gradient-text-green"></i>
+                            </div>
+                            <div class="flex space-x-3">
+                                <a href="https://github.com/salmanfareeth/PHP-XSS-Vulnerability-Demo" class="glass p-2 rounded-lg hover:scale-110 transition-transform" target="_blank">
+                                    <i class="fab fa-github text-white/70 hover:text-white"></i>
+                                </a>
+                                <a href="#" class="glass p-2 rounded-lg hover:scale-110 transition-transform">
+                                    <i class="fas fa-external-link-alt text-white/70 hover:text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">PHP XSS Vulnerability Demo</h3>
+                        <p class="text-white/70 mb-6 leading-relaxed">
+                            This repository contains a simple PHP program that demonstrates a Cross-Site Scripting (XSS) vulnerability. The program includes a form that allows users to submit a comment, which is then displayed on a webpage without proper sanitization, allowing potential script injection.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">PHP</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">XSS</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">OWASP</span>
+                            <span class="glass px-3 py-1 rounded-full text-xs text-white/80">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <a href="https://github.com/salmanfareeth" class="glass-button px-8 py-4 rounded-full text-white font-medium inline-flex items-center space-x-3 hover:scale-105 transition-transform" target="_blank">
+                    <span>View All Projects</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Grateful for the opportunity to collaborate Section -->
+<section class="py-32 px-6 relative z-10">
+    <div class="container mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+            Grateful for the <span class="gradient-text">opportunity to collaborate</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-16 rounded-full"></div>
+        
+        <div class="flex justify-center items-center gap-8 flex-wrap">
+            <!-- ZeroFox Card - Single glass card only -->
+            <div class="glass-card rounded-3xl p-8 w-[450px] h-[280px] flex items-center justify-center overflow-hidden">
+                <img src="./images/zf.jpeg" alt="ZeroFox Logo" class="max-w-full max-h-full object-contain rounded-xl">
+            </div>
+            
+            <!-- PrimeFort Card - Single glass card only -->
+            <div class="glass-card rounded-3xl p-8 w-[450px] h-[280px] flex items-center justify-center overflow-hidden">
+                <img src="./images/prft.jpg" alt="PrimeFort Logo" class="max-w-full max-h-full object-contain rounded-xl">
+            </div>
+        </div>
+    </div>
+</section>
+    
+   <!-- Enhanced professional credibility Section -->
+<section class="py-32 px-6 relative z-10">
+    <div class="container mx-auto">
+        <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+            Enhanced <span class="gradient-text">professional credibility</span>
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-16 rounded-full"></div>
+        
+        <div class="marquee">
+            <div class="marquee-content">
+                <!-- CompTIA Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/comptia-logo.png" alt="CompTIA" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- Qualys Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/qualys-logo.png" alt="Qualys" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- EC-Council Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/ec-council-logo.png" alt="EC-Council" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- Anna University Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/anna-university-logo.png" alt="Anna University" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- De Montfort University Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/de-montfort-university-logo.png" alt="De Montfort University" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- SOC Experts Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/soc-experts-logo.png" alt="SOC Experts" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- Apple Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/apple-logo.png" alt="Apple" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                <!-- Cert IN Card -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/certin-logo.png" alt="Cert IN" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <!-- Duplicate cards for seamless loop -->
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/comptia-logo.png" alt="CompTIA" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/qualys-logo.png" alt="Qualys" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/ec-council-logo.png" alt="EC-Council" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/anna-university-logo.png" alt="Anna University" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/de-montfort-university-logo.png" alt="De Montfort University" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/soc-experts-logo.png" alt="SOC Experts" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/apple-logo.png" alt="Apple" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+                <div class="marquee-item">
+                    <div class="glass-card rounded-3xl p-6 w-[320px] h-[200px] flex items-center justify-center">
+                        <img src="./images/certin-logo.png" alt="Cert IN" class="max-w-full max-h-full object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- Tech Stack Section -->
+    <section class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                Tech <span class="gradient-text">Stack</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="glass-card rounded-3xl p-8">
+                <p class="text-lg text-white/80 leading-relaxed mb-6">
+                    In building a flexible tech stack, I prioritise adaptability and strength to protect digital assets effectively. With my background in cybersecurity, I use a mix of tools and methods tailored to handle threats in web and mobile apps. Following standard frameworks like OWASP and OSSTMM, I tackle challenges with precision.
+                </p>
+                
+                <p class="text-lg text-white/80 leading-relaxed mb-6">
+                    My tech setup includes various tools to quickly find and fix vulnerabilities, strengthening security. Across cloud and container platforms, I set up strong defenses with tools like SIEM systems, firewalls, and malware scanners, keeping ahead of threats. I'm skilled with Windows, Linux, and macOS, customizing protection for each system. My goal is solid security, making sure my tech setup stands strong against changing threats.
+                    Alongside security testing, I design and develop custom platforms and tools, integrating AI and ML algorithms to enhance threat detection, automate incident response, and improve overall decision-making capabilities. By implementing data analytics pipelines, I transform complex datasets into actionable insights, enabling proactive risk management and predictive security strategies.
+                </p>
+                
+                <p class="text-lg text-white/80 leading-relaxed">
+                    Moreover, my proficiency in clear communication, both written and verbal, along with strong analytical skills, allows me to effectively handle complex security issues. I thrive when working independently, skillfully identifying and proposing effective solutions, thereby enhancing the credibility of my cybersecurity efforts.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Providing Solutions Section -->
+    <section class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                Providing <span class="gradient-text">Solutions</span>: What I Bring to the Table
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-green-400 to-blue-500 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Web Application Pentesting</h3>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Mobile Application Pentesting</h3>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Network/System Pentesting</h3>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-share-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Social Media Security</h3>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-search text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Log/Malware Analysis</h3>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">Security Monitoring</h3>
+                </div>
+                <div class="glass-card rounded-3xl p-8 text-center hover:scale-105 transition-transform">
+                    <div class="small-logo-placeholder mb-6">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-bold gradient-text-green">AI Platform Development</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 relative z-10">
+        <div class="container mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-bold text-center mb-4">
+                Get In <span class="gradient-text">Touch</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto mb-16 rounded-full"></div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <div class="space-y-8">
+                    <div class="glass-card rounded-3xl p-8">
+                        <p class="text-xl text-white/80 mb-8 leading-relaxed">
+                            I'm currently available for consulting, speaking engagements, and collaborative research projects.
+                            Whether you have a question or just want to say hi, I'll do my best to get back to you!
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-center p-6 glass rounded-2xl">
+                                <div class="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-xl flex items-center justify-center mr-6">
+                                    <i class="fas fa-envelope gradient-text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/60 text-sm">Email</p>
+                                    <p class="text-white font-medium">syed.fareeth@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center p-6 glass rounded-2xl">
+                                <div class="w-12 h-12 bg-gradient-to-br from-green-500/20 to-blue-600/20 rounded-xl flex items-center justify-center mr-6">
+                                    <i class="fas fa-map-marker-alt gradient-text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/60 text-sm">Location</p>
+                                    <p class="text-white font-medium">Chennai, India</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center p-6 glass rounded-2xl">
+                                <div class="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-xl flex items-center justify-center mr-6">
+                                    <i class="fas fa-calendar-alt gradient-text-accent"></i>
+                                </div>
+                                <div>
+                                    <p class="text-white/60 text-sm">Availability</p>
+                                    <p class="text-white font-medium">Open to consulting & research</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-3xl p-8">
+                        <h3 class="text-2xl font-display font-bold mb-8 gradient-text">Connect With Me</h3>
+                        <div class="flex justify-center space-x-6">
+                            <a href="https://twitter.com/YOUR_TWITTER_USERNAME" target="_blank" class="glass w-14 h-14 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-twitter text-xl gradient-text-accent"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/YOUR_LINKEDIN_USERNAME" target="_blank" class="glass w-14 h-14 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-linkedin-in text-xl gradient-text-accent"></i>
+                            </a>
+                            <a href="https://facebook.com/YOUR_FACEBOOK_USERNAME" target="_blank" class="glass w-14 h-14 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-facebook-f text-xl gradient-text-accent"></i>
+                            </a>
+                            <a href="https://instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" class="glass w-14 h-14 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram text-xl gradient-text-accent"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-3xl p-8">
+                    <h3 class="text-2xl font-display font-bold mb-8 gradient-text">Send Me a Message</h3>
+                    <p class="text-white/70 mb-8">
+                        Have a question or want to work together? Fill out the form below.
+                    </p>
+                    
+                    <form id="contact-form" action="https://formspree.io/f/xdkdbrla" method="POST" class="form-glass space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-white/80 mb-2">Name</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-xl transition-all duration-300" placeholder="Your full name" required>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-white/80 mb-2">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-xl transition-all duration-300" placeholder="your.email@example.com" required>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-white/80 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-xl transition-all duration-300" placeholder="What's this about?" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-white/80 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 rounded-xl transition-all duration-300 resize-none" placeholder="Tell me more about your project or question..." required></textarea>
+                        </div>
+                        
+                        <!-- Formspree's spam protection -->
+                        <input type="hidden" name="_subject" value="New message from Portfolio Contact Form">
+                        <input type="hidden" name="_next" value="thanks.html">
+                        <input type="text" name="_gotcha" style="display:none">
+                        
+                        <div class="pt-4">
+                            <button type="submit" class="w-full glass-button py-4 rounded-xl text-white font-medium hover:scale-[1.02] transition-transform">
+                                <span class="submit-text">Send Message</span>
+                                <span class="loading-text hidden">Sending...</span>
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <div id="form-success" class="hidden mt-6 p-4 glass rounded-xl border border-green-500/30">
+                        <p class="text-green-400 flex items-center justify-center">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            <span>Your message has been sent successfully!</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-16 px-6 relative z-10">
+        <div class="container mx-auto">
+            <div class="glass-card rounded-3xl p-8">
+                <div class="text-center">
+                    <div class="font-display text-2xl font-bold gradient-text mb-4">
+                    One secure byte at a time!
+                    </div>
+                    <p class="text-white/60 mb-6">
+                        © 2025 All Rights Reserved.
+                    </p>
+                    <div class="w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mb-6"></div>
+                    <p class="text-white/40 text-sm">
+                        Designed & Developed with ❤️ by salman_fareeth
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Typing animation
+            const typingText = document.getElementById('typing-text');
+            const phrases = [
+                'Security Engineer',
+                'Security Researcher', 
+                'AI research Engineer',
+                'Data Analyst'
+            ];
+            
+            let phraseIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            
+            function typeEffect() {
+                const currentPhrase = phrases[phraseIndex];
+                
+                if (!isDeleting) {
+                    typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                    charIndex++;
+                    
+                    if (charIndex === currentPhrase.length) {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            typeEffect();
+                        }, 2000);
+                        return;
+                    }
+                } else {
+                    typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                    charIndex--;
+                    
+                    if (charIndex === 0) {
+                        isDeleting = false;
+                        phraseIndex = (phraseIndex + 1) % phrases.length;
+                        setTimeout(typeEffect, 500);
+                        return;
+                    }
+                }
+                
+                setTimeout(typeEffect, isDeleting ? 50 : 100);
+            }
+            
+            typeEffect();
+            
+            // GitHub Security Advisories (Real-time data)
+            let currentAdvisoryIndex = 0;
+            let advisoryInterval;
+            let advisoriesData = [];
+            
+            // Fetch GitHub Security Advisories
+            async function fetchGitHubAdvisories() {
+                try {
+                    console.log('🚀 Fetching real GitHub Security Advisories...');
+                    const response = await fetch('https://api.github.com/advisories?per_page=15&sort=published&direction=desc');
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    const data = await response.json();
+                    console.log(`📊 Fetched ${data.length} real security advisories`);
+                    
+                    return data.map(advisory => {
+                        // Extract package info
+                        let packageName = 'Unknown Package';
+                        let ecosystem = '';
+                        
+                        if (advisory.vulnerabilities && advisory.vulnerabilities.length > 0) {
+                            const vuln = advisory.vulnerabilities[0];
+                            if (vuln.package) {
+                                packageName = vuln.package.name || 'Unknown Package';
+                                ecosystem = vuln.package.ecosystem || '';
+                            }
+                        }
+                        
+                        // Calculate time ago
+                        const publishedDate = new Date(advisory.published_at);
+                        const now = new Date();
+                        const diffMs = now - publishedDate;
+                        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+                        const diffDays = Math.floor(diffHours / 24);
+                        
+                        let timeAgo;
+                        if (diffHours < 1) {
+                            timeAgo = 'Less than an hour ago';
+                        } else if (diffHours < 24) {
+                            timeAgo = `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+                        } else if (diffDays < 7) {
+                            timeAgo = `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+                        } else {
+                            const diffWeeks = Math.floor(diffDays / 7);
+                            timeAgo = `${diffWeeks} week${diffWeeks > 1 ? 's' : ''} ago`;
+                        }
+                        
+                        // Get CVE ID if available
+                        let cveId = advisory.cve_id || advisory.ghsa_id || 'N/A';
+                        
+                        // Clean up title
+                        let title = advisory.summary || 'Security vulnerability detected';
+                        if (title.length > 80) {
+                            title = title.substring(0, 80) + '...';
+                        }
+                        
+                        // Format package display
+                        const packageDisplay = ecosystem ? `${packageName} (${ecosystem})` : packageName;
+                        
+                        return {
+                            title: title,
+                            severity: advisory.severity || 'moderate',
+                            cve: cveId,
+                            package: packageDisplay,
+                            time: timeAgo
+                        };
+                    });
+                    
+                } catch (error) {
+                    console.error('❌ Error fetching GitHub advisories:', error);
+                    // Return empty array if fetch fails
+                    return [];
+                }
+            }
+            
+            function getSeverityColor(severity) {
+                switch(severity.toLowerCase()) {
+                    case 'critical': return 'text-red-400 font-bold';
+                    case 'high': return 'text-orange-400 font-bold';
+                    case 'medium': 
+                    case 'moderate': return 'text-yellow-400 font-bold';
+                    case 'low': return 'text-green-400 font-bold';
+                    default: return 'text-gray-400 font-bold';
+                }
+            }
+            
+            function updateAdvisoryDisplay() {
+                if (advisoriesData.length === 0) return;
+                
+                const advisory = advisoriesData[currentAdvisoryIndex];
+                
+                document.getElementById('advisory-title').innerHTML = `${advisory.title} <span class="${getSeverityColor(advisory.severity)}">${advisory.severity.charAt(0).toUpperCase() + advisory.severity.slice(1)}</span>`;
+                document.getElementById('advisory-cve').textContent = advisory.cve;
+                document.getElementById('advisory-package').textContent = advisory.package;
+                document.getElementById('advisory-time').textContent = advisory.time;
+                
+                // Hide loading animation
+                document.getElementById('advisory-loading').style.display = 'none';
+                
+                currentAdvisoryIndex = (currentAdvisoryIndex + 1) % advisoriesData.length;
+            }
+            
+            async function initializeAdvisoryDisplay() {
+                try {
+                    // Show loading
+                    document.getElementById('advisory-loading').style.display = 'flex';
+                    
+                    // Fetch real GitHub advisories
+                    advisoriesData = await fetchGitHubAdvisories();
+                    
+                    if (advisoriesData.length > 0) {
+                        console.log(`✅ Loaded ${advisoriesData.length} real GitHub advisories`);
+                        
+                        // Initialize display after loading
+                        setTimeout(() => {
+                            updateAdvisoryDisplay();
+                        }, 1500);
+                        
+                        // Set up rotation every 4 seconds
+                        advisoryInterval = setInterval(() => {
+                            updateAdvisoryDisplay();
+                        }, 4000);
+                        
+                        // Refresh data every hour for latest advisories
+                        setInterval(async () => {
+                            console.log('🔄 Refreshing advisory data...');
+                            const newData = await fetchGitHubAdvisories();
+                            if (newData.length > 0) {
+                                advisoriesData = newData;
+                                currentAdvisoryIndex = 0; // Reset to show latest
+                                console.log(`✅ Refreshed with ${newData.length} advisories`);
+                            }
+                        }, 60 * 60 * 1000); // Every hour
+                        
+                    } else {
+                        // If no data, show a message
+                        document.getElementById('advisory-title').textContent = 'Unable to load security advisories';
+                        document.getElementById('advisory-cve').textContent = '';
+                        document.getElementById('advisory-package').textContent = 'Please check your connection';
+                        document.getElementById('advisory-time').textContent = '';
+                        document.getElementById('advisory-loading').style.display = 'none';
+                    }
+                    
+                } catch (error) {
+                    console.error('❌ Error initializing advisories:', error);
+                    document.getElementById('advisory-loading').style.display = 'none';
+                }
+            }
+            
+            // Start the real advisory display
+            initializeAdvisoryDisplay();
+            
+            function getSeverityClass(severity) {
+                switch(severity.toUpperCase()) {
+                    case 'CRITICAL': return 'severity-critical';
+                    case 'HIGH': return 'severity-high';
+                    case 'MEDIUM': return 'severity-medium';
+                    case 'LOW': return 'severity-low';
+                    default: return 'severity-medium';
+                }
+            }
+            
+            function updateCveDisplay() {
+                if (cveData.length === 0) return;
+                
+                const cve = cveData[currentCveIndex];
+                
+                document.getElementById('cve-severity').textContent = cve.severity;
+                document.getElementById('cve-severity').className = `inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 ${getSeverityClass(cve.severity)}`;
+                document.getElementById('cve-id').textContent = cve.id;
+                document.getElementById('cve-title').textContent = cve.title;
+                document.getElementById('cve-description').textContent = cve.description;
+                document.getElementById('cve-date').textContent = new Date(cve.date).toLocaleDateString();
+                document.getElementById('cve-score').textContent = `CVSS: ${cve.score}`;
+                
+                // Hide loading animation
+                document.getElementById('cve-loading').style.display = 'none';
+                
+                currentCveIndex = (currentCveIndex + 1) % cveData.length;
+            }
+            
+            async function initializeCveFeed() {
+                try {
+                    // Show loading animation
+                    document.getElementById('cve-loading').style.display = 'flex';
+                    
+                    // Fetch real CVE data from NIST API (free!)
+                    console.log('🚀 Initializing live CVE feed from NIST...');
+                    cveData = await fetchRealCveData();
+                    
+                    if (cveData.length === 0) {
+                        console.log('📝 No fresh CVE data received, using fallback data');
+                        cveData = getMockCveData();
+                    } else {
+                        console.log(`🎯 Successfully loaded ${cveData.length} live CVE entries`);
+                        
+                        // Sort by severity (Critical > High > Medium > Low)
+                        cveData.sort((a, b) => {
+                            const severityOrder = { 'CRITICAL': 4, 'HIGH': 3, 'MEDIUM': 2, 'LOW': 1, 'UNKNOWN': 0 };
+                            return (severityOrder[b.severity] || 0) - (severityOrder[a.severity] || 0);
+                        });
+                    }
+                    
+                    // Initialize with first advisory
+                    setTimeout(() => {
+                        updateAdvisoryDisplay();
+                        startAdvisoryTimer();
+                    }, 2000);
+                    
+                    // Set up advisory rotation (every 20 seconds)
+                    advisoryInterval = setInterval(() => {
+                        updateAdvisoryDisplay();
+                        advisoryTimer = 20;
+                    }, 20000);
+                    
+                    // Refresh advisory data every hour to get latest vulnerabilities
+                    setInterval(async () => {
+                        console.log('🔄 Refreshing GitHub advisory data...');
+                        try {
+                            const newAdvisoryData = await fetchGitHubAdvisories();
+                            if (newAdvisoryData.length > 0) {
+                                advisoryData = newAdvisoryData;
+                                currentAdvisoryIndex = 0; // Reset to show latest
+                                console.log(`✅ Advisory data refreshed: ${advisoryData.length} entries`);
+                            }
+                        } catch (error) {
+                            console.log('⚠️ Advisory refresh failed, keeping existing data');
+                        }
+                    }, 60 * 60 * 1000); // 1 hour
+                    
+                } catch (error) {
+                    console.error('❌ Error initializing advisory feed:', error);
+                    // Use mock data as fallback
+                    advisoryData = getMockAdvisoryData();
+                    
+                    setTimeout(() => {
+                        updateAdvisoryDisplay();
+                        startAdvisoryTimer();
+                    }, 2000);
+                }
+            }
+            
+            // Contact form with Formspree
+            const contactForm = document.getElementById('contact-form');
+            const formSuccess = document.getElementById('form-success');
+            
+            contactForm.addEventListener('submit', function(e) {
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const submitText = submitButton.querySelector('.submit-text');
+                const loadingText = submitButton.querySelector('.loading-text');
+                
+                // Show loading state
+                submitText.classList.add('hidden');
+                loadingText.classList.remove('hidden');
+                submitButton.disabled = true;
+                
+                // Let Formspree handle the submission
+                // The form will redirect or show success based on Formspree configuration
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Parallax effect for blobs
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const blobs = document.querySelectorAll('.blob');
+                
+                blobs.forEach((blob, index) => {
+                    const speed = 0.2 + (index * 0.1);
+                    blob.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
