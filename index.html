@@ -547,7 +547,7 @@
                         <div class="space-y-6 lg:space-y-8">
                             <div class="timeline-item">
                                 <h4 class="text-lg lg:text-xl font-bold text-white mb-2">Security Engineer</h4>
-                                <p class="gradient-text-accent font-medium mb-2">Primefort Pvt Ltd. | Oct 2022 - Present</p>
+                                <p class="gradient-text-accent font-medium mb-2">Primefort Pvt Ltd. | Oct 2022 - Dec 2023</p>
                                 <p class="text-white/70 text-sm lg:text-base">Conducted penetration tests and security assessments for enterprise clients.</p>
                             </div>
                             <div class="timeline-item">
@@ -670,7 +670,7 @@
                         <div class="glass p-3 lg:p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
                             <i class="fas fa-code text-xl lg:text-2xl gradient-text-accent mb-2"></i>
                             <h4 class="text-white font-bold mb-1 text-xs lg:text-sm">Programming</h4>
-                            <p class="text-white/60 text-xs">Python, C/C++, Go, JavaScript</p>
+                            <p class="text-white/60 text-xs">Python, C, Go, JavaScript</p>
                         </div>
                         
                         <div class="glass p-3 lg:p-4 rounded-2xl text-center hover:scale-105 transition-transform cursor-pointer">
@@ -1387,7 +1387,7 @@
                     }
                     
                     const data = await response.json();
-                    console.log(`📊 Fetched ${data.length} real security advisories`);
+                    console.log(` Fetched ${data.length} real security advisories`);
                     
                     return data.map(advisory => {
                         // Extract package info
@@ -1443,7 +1443,7 @@
                     });
                     
                 } catch (error) {
-                    console.error('❌ Error fetching GitHub advisories:', error);
+                    console.error(' Error fetching GitHub advisories:', error);
                     // Return empty array if fetch fails
                     return [];
                 }
@@ -1485,7 +1485,7 @@
                     advisoriesData = await fetchGitHubAdvisories();
                     
                     if (advisoriesData.length > 0) {
-                        console.log(`✅ Loaded ${advisoriesData.length} real GitHub advisories`);
+                        console.log(` Loaded ${advisoriesData.length} real GitHub advisories`);
                         
                         // Initialize display after loading
                         setTimeout(() => {
@@ -1499,12 +1499,12 @@
                         
                         // Refresh data every hour for latest advisories
                         setInterval(async () => {
-                            console.log('🔄 Refreshing advisory data...');
+                            console.log(' Refreshing advisory data...');
                             const newData = await fetchGitHubAdvisories();
                             if (newData.length > 0) {
                                 advisoriesData = newData;
                                 currentAdvisoryIndex = 0; // Reset to show latest
-                                console.log(`✅ Refreshed with ${newData.length} advisories`);
+                                console.log(` Refreshed with ${newData.length} advisories`);
                             }
                         }, 60 * 60 * 1000); // Every hour
                         
@@ -1518,7 +1518,7 @@
                     }
                     
                 } catch (error) {
-                    console.error('❌ Error initializing advisories:', error);
+                    console.error(' Error initializing advisories:', error);
                     document.getElementById('advisory-loading').style.display = 'none';
                 }
             }
