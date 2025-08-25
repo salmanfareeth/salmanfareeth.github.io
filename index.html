@@ -35,34 +35,56 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
-       
+       /* Image size fixes - complete solution */
         img {
             max-width: 100%;
             height: auto;
-            object-fit: cover;
         }
         
-        
+        /* Profile picture - circular container */
         .rounded-full img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-       
+        /* Company collaboration section logos (ZeroFox and PrimeFort) */
         .glass-card img[alt*="ZeroFox"],
         .glass-card img[alt*="PrimeFort"] {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-        
-        
-        .marquee-item .glass-card img {
+            width: auto;
+            height: auto;
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
-            margin: auto;
+        }
+        
+        /* Marquee section - override the general glass-card rule */
+        .marquee .glass-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .marquee .glass-card img {
+            width: auto;
+            height: auto;
+            max-width: 75%;
+            max-height: 75%;
+            object-fit: contain;
+        }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 640px) {
+            .marquee .glass-card img {
+                max-width: 65%;
+                max-height: 65%;
+            }
+        }
+        
+        /* Ensure glass cards maintain their dimensions */
+        .glass-card {
+            overflow: hidden;
+            position: relative;
         }
         
         * {
