@@ -7,8 +7,11 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+       
         
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -21,13 +24,22 @@
             --text-secondary: rgba(255, 255, 255, 0.8);
             --text-tertiary: rgba(255, 255, 255, 0.6);
         }
+
+        /* Enhanced font loading */
+        .fonts-loaded body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .fonts-loaded .font-display {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+        }
         
         * {
             box-sizing: border-box;
         }
         
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%);
             color: var(--text-primary);
             overflow-x: hidden;
@@ -35,7 +47,7 @@
         }
         
         .font-display {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             font-weight: 600;
             letter-spacing: -0.02em;
         }
@@ -1379,7 +1391,7 @@
             // Fetch GitHub Security Advisories
             async function fetchGitHubAdvisories() {
                 try {
-                    console.log('🚀 Fetching real GitHub Security Advisories...');
+                    console.log('Fetching real GitHub Security Advisories...');
                     const response = await fetch('https://api.github.com/advisories?per_page=15&sort=published&direction=desc');
                     
                     if (!response.ok) {
@@ -1572,6 +1584,20 @@
                 });
             });
         });
+
+        // Font loading detection
+        if (document.fonts) {
+            document.fonts.ready.then(function() {
+                document.documentElement.classList.add('fonts-loaded');
+            }).catch(function() {
+                console.warn('Font loading failed, using system fonts');
+            });
+        } else {
+            // Fallback for older browsers
+            setTimeout(function() {
+                document.documentElement.classList.add('fonts-loaded');
+            }, 3000);
+        }
     </script>
 </body>
 </html>
