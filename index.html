@@ -35,26 +35,34 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
-        /* Image size fixes */
+       
         img {
             max-width: 100%;
             height: auto;
             object-fit: cover;
         }
         
-        /* Specific fixes for your images */
-        .marquee-item img,
-        .glass-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
         
-        /* Profile picture fix */
         .rounded-full img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        
+       
+        .glass-card img[alt*="ZeroFox"],
+        .glass-card img[alt*="PrimeFort"] {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        
+        .marquee-item .glass-card img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            margin: auto;
         }
         
         * {
