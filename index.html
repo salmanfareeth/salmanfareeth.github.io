@@ -35,49 +35,56 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
         }
 
-       /* Image size fixes - complete solution */
+       /* Base image settings */
         img {
             max-width: 100%;
             height: auto;
         }
         
-        /* Profile picture - circular container */
-        .rounded-full img {
+        /* Profile picture only */
+        .hero-section .rounded-full img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
-        /* Company collaboration section logos (ZeroFox and PrimeFort) */
-        .glass-card img[alt*="ZeroFox"],
-        .glass-card img[alt*="PrimeFort"] {
+        /* Company logos section - target by section class */
+        section:has(h2:contains("opportunity to collaborate")) .glass-card img {
             width: auto;
             height: auto;
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 80%;
+            max-height: 80%;
             object-fit: contain;
+            margin: auto;
         }
         
-        /* Marquee section - override the general glass-card rule */
-        .marquee .glass-card {
+        /* Marquee logos - most specific targeting */
+        .marquee .marquee-item .glass-card img {
+            width: auto !important;
+            height: auto !important;
+            max-width: 60%;
+            max-height: 60%;
+            object-fit: contain;
+            margin: auto;
+        }
+        
+        /* Remove conflicting styles from glass-card */
+        .glass-card {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .glass-card:not(.marquee-item .glass-card) {
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .marquee .glass-card img {
-            width: auto;
-            height: auto;
-            max-width: 75%;
-            max-height: 75%;
-            object-fit: contain;
-        }
-        
-        /* Mobile responsive adjustments */
+        /* Mobile adjustments */
         @media (max-width: 640px) {
-            .marquee .glass-card img {
-                max-width: 65%;
-                max-height: 65%;
+            .marquee .marquee-item .glass-card img {
+                max-width: 50%;
+                max-height: 50%;
             }
         }
         
