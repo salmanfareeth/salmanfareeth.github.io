@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Salman Fareeth | Cybersecurity Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-    <link rel="stylesheet" href="tailwind.min.css">
-    <link rel="stylesheet" href="fontawesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        
-/*         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+       
+       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
         
         :root {
             --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -33,65 +33,6 @@
 
         .fonts-loaded .font-display {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-       /* Base image settings */
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        
-        /* Profile picture only */
-        .hero-section .rounded-full img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Company logos section - target by section class */
-        section:has(h2:contains("opportunity to collaborate")) .glass-card img {
-            width: auto;
-            height: auto;
-            max-width: 80%;
-            max-height: 80%;
-            object-fit: contain;
-            margin: auto;
-        }
-        
-        /* Marquee logos - most specific targeting */
-        .marquee .marquee-item .glass-card img {
-            width: auto !important;
-            height: auto !important;
-            max-width: 60%;
-            max-height: 60%;
-            object-fit: contain;
-            margin: auto;
-        }
-        
-        /* Remove conflicting styles from glass-card */
-        .glass-card {
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .glass-card:not(.marquee-item .glass-card) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Mobile adjustments */
-        @media (max-width: 640px) {
-            .marquee .marquee-item .glass-card img {
-                max-width: 50%;
-                max-height: 50%;
-            }
-        }
-        
-        /* Ensure glass cards maintain their dimensions */
-        .glass-card {
-            overflow: hidden;
-            position: relative;
         }
         
         * {
