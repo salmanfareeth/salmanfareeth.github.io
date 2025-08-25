@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Salman Fareeth | Cybersecurity Researcher</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" onerror="this.onerror=null;this.href='https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css';">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onerror="this.onerror=null;this.href='https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css';">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -32,56 +32,6 @@
 
         .fonts-loaded .font-display {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        /* Critical CSS fallbacks for blocked CDNs */
-            .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
-            .hidden { display: none !important; }
-            .flex { display: flex; }
-            .items-center { align-items: center; }
-            .justify-center { justify-content: center; }
-            .justify-between { justify-content: space-between; }
-            .text-center { text-align: center; }
-            .text-white { color: white; }
-            .text-lg { font-size: 1.125rem; }
-            .text-xl { font-size: 1.25rem; }
-            .text-2xl { font-size: 1.5rem; }
-            .text-3xl { font-size: 1.875rem; }
-            .font-bold { font-weight: bold; }
-            .mb-2 { margin-bottom: 0.5rem; }
-            .mb-4 { margin-bottom: 1rem; }
-            .mb-6 { margin-bottom: 1.5rem; }
-            .p-3 { padding: 0.75rem; }
-            .p-4 { padding: 1rem; }
-            .p-6 { padding: 1.5rem; }
-            .px-4 { padding-left: 1rem; padding-right: 1rem; }
-            .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
-            .rounded-xl { border-radius: 0.75rem; }
-            .rounded-full { border-radius: 9999px; }
-            .grid { display: grid; }
-            .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-            .space-y-4 > * + * { margin-top: 1rem; }
-            .space-y-6 > * + * { margin-top: 1.5rem; }
-            .gap-6 { gap: 1.5rem; }
-            .w-full { width: 100%; }
-            .min-h-screen { min-height: 100vh; }
-            .fixed { position: fixed; }
-            .relative { position: relative; }
-            .top-0 { top: 0; }
-            .z-50 { z-index: 50; }
-            .transition-transform { transition-property: transform; }
-            .hover\:scale-105:hover { transform: scale(1.05); }
-        
-        @media (min-width: 768px) {
-            .md\:flex { display: flex; }
-            .md\:hidden { display: none; }
-            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-        }
-        
-        @media (min-width: 1024px) {
-            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .lg\:text-2xl { font-size: 1.5rem; }
-            .lg\:p-8 { padding: 2rem; }
         }
         
         * {
@@ -1648,57 +1598,6 @@
                 document.documentElement.classList.add('fonts-loaded');
             }, 3000);
         }
-
-        // Check if Google Fonts loaded, fallback if not
-            setTimeout(function() {
-                var testFont = document.createElement('div');
-                testFont.style.fontFamily = 'Inter, sans-serif';
-                testFont.style.position = 'absolute';
-                testFont.style.visibility = 'hidden';
-                testFont.innerHTML = 'Test';
-                document.body.appendChild(testFont);
-                
-                var fallbackUsed = window.getComputedStyle(testFont).fontFamily.indexOf('Inter') === -1;
-                if (fallbackUsed) {
-                    console.warn('Google Fonts blocked, using system fonts');
-                    document.documentElement.classList.remove('fonts-loaded');
-                }
-                document.body.removeChild(testFont);
-            }, 5000); 
-    </script>
-    <script>
-            // Resource loading verification
-            document.addEventListener('DOMContentLoaded', function() {
-                // Check if Tailwind loaded
-                setTimeout(function() {
-                    var testDiv = document.createElement('div');
-                    testDiv.className = 'flex';
-                    document.body.appendChild(testDiv);
-                    
-                    var isFlexWorking = window.getComputedStyle(testDiv).display === 'flex';
-                    if (!isFlexWorking) {
-                        console.warn('Tailwind CSS failed to load, using fallback styles');
-                        // Fallback already provided in CSS above
-                    }
-                    document.body.removeChild(testDiv);
-                }, 2000);
-                
-                // Check Font Awesome
-                setTimeout(function() {
-                    var testIcon = document.createElement('i');
-                    testIcon.className = 'fas fa-check';
-                    testIcon.style.position = 'absolute';
-                    testIcon.style.visibility = 'hidden';
-                    document.body.appendChild(testIcon);
-                    
-                    var fontFamily = window.getComputedStyle(testIcon, ':before').fontFamily;
-                    if (fontFamily.indexOf('Font Awesome') === -1) {
-                        console.warn('Font Awesome failed to load');
-                        // Icons will show as text fallbacks
-                    }
-                    document.body.removeChild(testIcon);
-                }, 3000);
-            });
     </script>
 </body>
 </html>
